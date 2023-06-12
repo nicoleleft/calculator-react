@@ -40,7 +40,15 @@ const StackVisualizer = () => {
         <button onClick={popFromStack}>Pop</button>
       </div>
       <div>
+        {/* use unordered list to wrap the list items to represent
+            the stack visually */}
         <ul>
+          {/* use stack.map(function) to iterate over each item in the "stack"
+              array, and for each item we define an anonymous function
+              (item, index) => (...) that creates a new list item for 
+              each element being added to the stack and give it a unique 
+              identifier, which is the key (the index) and the content of 
+              the list item is in fact the item and will be displayed to the screen */}
           {stack.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
