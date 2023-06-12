@@ -22,6 +22,9 @@ const StackVisualizer = () => {
   const popFromStack = () => {
     // if stack has items in it, pop the top one
     if (stack.length > 0) {
+      {/* stack.slice(1) works here by creating a new array that
+          starts from index 1, effectively removing the item at 
+          index 0 and simulating the behavior of the stack*/}
       const updatedStack = stack.slice(1);
       setStack(updatedStack);
     }
