@@ -28,14 +28,23 @@ const StackVisualizer = () => {
       const updatedStack = stack.slice(1);
       setStack(updatedStack);
     }
+
+    // trigger the animation by adding a class to the stack container
+    document.querySelector('.stack-container').classList.add('pop-animation');
+
+    // remove the animation class after a short delay
+    setTimeout(() => {
+      document.querySelector('.stack-container').classList.remove('pop-animation');
+    }, 300);
   };
 
   return (
-    <div>
-      <h2>Stack Visualizer</h2>
-      <div>
+    <>
+      <p className='title'>Stack Visualizer</p>
+      <div className='input-container'>
         <input
           type="text"
+          placeholder='Enter an item to put on the stack...'
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
@@ -45,7 +54,7 @@ const StackVisualizer = () => {
       <div>
         {/* use unordered list to wrap the list items to represent
             the stack visually */}
-        <ul>
+        <ul className='stack-container'>
           {/* use stack.map(function) to iterate over each item in the "stack"
               array, and for each item we define an anonymous function
               (item, index) => (...) that creates a new list item for 
@@ -57,7 +66,8 @@ const StackVisualizer = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
+
   );
 };
 
