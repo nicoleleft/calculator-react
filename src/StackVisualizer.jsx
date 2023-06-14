@@ -32,7 +32,12 @@ const StackVisualizer = () => {
   };
 
   return (
-    <>
+    
+    <>{/*this is and "empty tag" or React Fragment used for getting 
+        rid of extra wrapper elements we use to need whenever
+        multiple elements needed to be rendered by a component,
+        lets us return multiple elements without having any wrapper
+        element containing them (used ot be <React.Fragment><React.Fragment/>*/}
       <p className='title'>Stack Visualizer</p>
       <div className='input-container'>
         <input
