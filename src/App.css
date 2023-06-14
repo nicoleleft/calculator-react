@@ -50,12 +50,17 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
-.stack-container {
-  transition: transform 3s ease-out; /* Adjust the duration and easing as desired */
+.item-exit {
+  opacity: 1;
+  transform: translateY(0%);
 }
 
-.pop-animation {
-  transform: translateY(-4%); /* Adjust the value based on how much you want the stack to slide up */
+.item-exit-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 500ms, transform 200ms;
 }
+

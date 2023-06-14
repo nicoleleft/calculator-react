@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const StackVisualizer = () => {
   // initialized w/ empty array to store the items in the stack
   const [stack, setStack] = useState([]);   
-  // initialized w/ empty string to store the value entered in the
-  // input field
+  // initialized w/ empty string to store the value 
+  // entered in the input field
   const [value, setValue] = useState('');   
 
   // function to push an input to the stack
@@ -28,14 +29,6 @@ const StackVisualizer = () => {
       const updatedStack = stack.slice(1);
       setStack(updatedStack);
     }
-
-    // trigger the animation by adding a class to the stack container
-    document.querySelector('.stack-container').classList.add('pop-animation');
-
-    // remove the animation class after a short delay
-    setTimeout(() => {
-      document.querySelector('.stack-container').classList.remove('pop-animation');
-    }, 300);
   };
 
   return (
@@ -54,16 +47,20 @@ const StackVisualizer = () => {
       <div>
         {/* use unordered list to wrap the list items to represent
             the stack visually */}
-        <ul className='stack-container'>
-          {/* use stack.map(function) to iterate over each item in the "stack"
+        <ul>
+          <TransitionGroup>
+            {/* use stack.map(function) to iterate over each item in the "stack"
               array, and for each item we define an anonymous function
               (item, index) => (...) that creates a new list item for 
               each element being added to the stack and give it a unique 
               identifier, which is the key (the index) and the content of 
               the list item is in fact the item and will be displayed to the screen */}
           {stack.map((item, index) => (
-            <li key={index}>{item}</li>
+            <CSSTransition key={index} timeout={500} classNames='item'>
+              <li>{item}</li>
+            </CSSTransition>
           ))}
+          </TransitionGroup>
         </ul>
       </div>
     </>
